@@ -70,7 +70,8 @@
 <script src="<?= base_url('assets/') ?>js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url('assets/') ?>chart.js"></script>
-
+<!-- overlayScrollbars -->
+<script src="<?= base_url('assets/') ?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- Page specific script -->
 <script>
     $(function () {
@@ -123,7 +124,149 @@
         "responsive": true,
     });
 });
-</script>
+</script><script>
+        // pH Chart
+        var phCtx = document.getElementById('phChart').getContext('2d');
+        var phLabels = [];
+        var phData = [];
+
+        var phChart = new Chart(phCtx, {
+            type: 'line',
+            data: {
+                labels: phLabels,
+                datasets: [{
+                    label: 'pH Level',
+                    data: phData,
+                    borderColor: 'rgba(60, 141, 188, 1)',
+                    borderWidth: 2,
+                    fill: false,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'pH Level'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time'
+                        }
+                    }
+                }
+            }
+        });
+
+        // TSS Chart
+        var tssCtx = document.getElementById('tssChart').getContext('2d');
+        var tssLabels = [];
+        var tssData = [];
+
+        var tssChart = new Chart(tssCtx, {
+            type: 'bar',
+            data: {
+                labels: tssLabels,
+                datasets: [{
+                    label: 'TSS Level (mg/L)',
+                    data: tssData,
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'TSS (mg/L)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Water Level Chart
+        var waterLevelCtx = document.getElementById('waterLevelChart').getContext('2d');
+        var waterLevelLabels = [];
+        var waterLevelData = [];
+
+        var waterLevelChart = new Chart(waterLevelCtx, {
+            type: 'line', // Area chart dapat dibuat dengan jenis 'line' dan mengisi area
+            data: {
+                labels: waterLevelLabels,
+                datasets: [{
+                    label: 'Water Level (cm)',
+                    data: waterLevelData,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: true,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Water Level (cm)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Simulasi pengambilan data real-time
+        setInterval(function() {
+            var timestamp = new Date().toLocaleTimeString();
+
+            // Menghasilkan data pH
+            var newPHValue = (Math.random() * 2 + 6).toFixed(2);
+            if (phLabels.length >= 10) {
+                phLabels.shift();
+                phData.shift();
+            }
+            phLabels.push(timestamp);
+            phData.push(newPHValue);
+            phChart.update();
+
+            // Menghasilkan data TSS
+            var newTSSValue = Math.floor(Math.random() * 500); // TSS antara 0 - 500 mg/L
+            if (tssLabels.length >= 10) {
+                tssLabels.shift();
+                tssData.shift();
+            }
+            tssLabels.push(timestamp);
+            tssData.push(newTSSValue);
+            tssChart.update();
+
+            // Menghasilkan data level air
+            var newWaterLevelValue = Math.floor(Math.random() * 100); // Level air antara 0 - 100 cm
+            if (waterLevelLabels.length >= 10) {
+                waterLevelLabels.shift();
+                waterLevelData.shift();
+            }
+            waterLevelLabels.push(timestamp);
+            waterLevelData.push(newWaterLevelValue);
+            waterLevelChart.update();
+        }, 2000); // Update setiap 2 detik
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/js/adminlte.min.js"></script>
 
 </body>
 </html>

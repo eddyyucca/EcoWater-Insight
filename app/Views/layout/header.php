@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SafetyAlertPro</title>
+  <title>EcoWater Insight Pro</title>
 
   <!-- icon -->
-  <link rel="shortcut icon" href=" <?= base_url('assets/') ?>icon.ico">
+  <link rel="shortcut icon" href=" <?= base_url('assets/') ?>logo.jpg">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/fontawesome-free/css/all.min.css">
   <!-- DataTables -->
@@ -17,7 +17,8 @@
   <link rel="stylesheet" href="<?= base_url('assets/') ?>css/adminlte.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/chart.js/Chart.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>sweetalert/sweetalert2.min.css">
-
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 </head>
 
 <style>
@@ -37,7 +38,7 @@
 		<div class="container-fluid">
 			<div class="row mb-3">
 				<div class="col-sm-6">
-					<h1 class="m-0"><i class="fas fa-chart-line"></i> Unit's Summary Dashboard</h1>
+					<h1 class="m-0"><i class="fas fa-water"></i> Water Monitoring Dashboard</h1>
 				</div><!-- /.col -->
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">

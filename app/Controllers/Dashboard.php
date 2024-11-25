@@ -8,4 +8,8 @@ class Dashboard extends BaseController
     {
          return view('dashboard/dashboard');
     }
+    public function about(): string
+    {
+         return view('dashboard/about');
+    }
 }
