@@ -30,6 +30,25 @@
 
             <!-- Sidebar -->
             <?= $this->include('layout/sidebar'); ?>
-            <!-- Isi dari view spesifik -->
+            <!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+	<!-- Content Header (Page header) -->
+	<div class="content-header">
+		<div class="container-fluid">
+			<div class="row mb-3">
+				<div class="col-sm-6">
+					<h1 class="m-0"><i class="fas fa-chart-line"></i> Unit's Summary Dashboard</h1>
+				</div><!-- /.col -->
+				<div class="col-sm-6">
+					<ol class="breadcrumb float-sm-right">
+						<li class="breadcrumb-item"><a href="#">Home</a></li>
+						<li class="breadcrumb-item active">Dashboard</li>
+					</ol>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.container-fluid -->
+	</div>
+	<!-- /.content-header -->
             <?= $this->renderSection('content'); ?> 
+            </div>
             <?= $this->include('layout/footer'); ?>
